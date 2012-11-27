@@ -13,10 +13,12 @@ public:
     explicit light_dispersion_widget(QWidget *parent = 0);
     
 protected:
-    void paintEvent(QPaintEvent*);
-    void closeEvent(QCloseEvent*);
-    void mousePressEvent(QMouseEvent*);
-    void mouseMoveEvent(QMouseEvent*);
+    void paintEvent(QPaintEvent *);
+    void closeEvent(QCloseEvent *);
+    void mousePressEvent(QMouseEvent *);
+    void mouseMoveEvent(QMouseEvent *);
+    void wheelEvent(QWheelEvent *);
+    void keyPressEvent(QKeyEvent *);
 
 private:
     void _setDataFromFile();
@@ -32,9 +34,9 @@ public slots:
 
 private:
     unsigned int _current_x;
-    unsigned int _width;
+    int _width;
 
-    // static const QString _file_name;
+    static const int _DELTA_WIDTH = 4;
 };
 
 // const QString light_dispersion_widget::_file_name = "light_dispersion.dat";
