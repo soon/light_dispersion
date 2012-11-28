@@ -2,8 +2,6 @@
 #define LIGHT_DISPERSION_WIDGET_HPP
 
 #include <QtGui/QWidget>
-#include <QPoint>
-#include <QtGlobal>
 #include <QString>
 
 class light_dispersion_widget : public QWidget
@@ -28,17 +26,11 @@ private:
         return "ligth_dispersion.dat";
     }
 
-signals:
-    
-public slots:
-
 private:
-    unsigned int _current_x;
+    int _current_x;
     int _width;
 
-    static const int _DELTA_WIDTH = 4;
+    static const int _DELTA_WIDTH = 2;
 };
-
-// const QString light_dispersion_widget::_file_name = "light_dispersion.dat";
 
 #endif // LIGHT_DISPERSION_WIDGET_HPP

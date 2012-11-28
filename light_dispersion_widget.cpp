@@ -17,23 +17,14 @@ light_dispersion_widget::light_dispersion_widget(QWidget *parent)
     _setDataFromFile();
     qDebug() << "x: " << _current_x;
     qDebug() << "width: " << _width;
-    // _current = QPoint( / 2, maximumHeight() / 2);
-    // _current_x =
-    // qDebug() << width() << ' ' << height();
 }
 
 void light_dispersion_widget::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
 
-    // painter.setRenderHint(QPainter::Antialiasing, false);
-
     painter.setBrush(Qt::black);
     painter.drawRect(0, 0, width(), height());
-
-    // qDebug() << _current.x();
-
-    // qDebug() << width() << ' ' << height();
 
     painter.setBrush(Qt::white);
     painter.drawRect(_current_x, 0, _width, height());
@@ -48,6 +39,8 @@ void light_dispersion_widget::mousePressEvent(QMouseEvent *event)
 {
     if(event -> button() == Qt::LeftButton)
         _current_x = event -> pos().x();
+    else if(event -> button() == Qt::RightButton)
+        close();
     update();
 }
 
@@ -55,7 +48,6 @@ void light_dispersion_widget::mouseMoveEvent(QMouseEvent *event)
 {
     if(event -> buttons() & Qt::LeftButton)
     {
-        qDebug("mouseMoveEvent");
         _current_x = event -> pos().x();
     }
     update();
